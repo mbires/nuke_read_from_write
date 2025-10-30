@@ -4,6 +4,7 @@ From selected Write and DeepWrite nodes creates Read nodes.
 Path and colorspace is taken from Write node, in case of image sequence it will get frame range from rendered images.
 So it doesn't matter if only part of project frame range is rendered.
 Multi-selection with multi-format is supported.
+Created by Marek Bires
 """
 
 import os.path
@@ -62,7 +63,7 @@ def readFromWrite():
 
         if isMov == "mov" or isMov == "mxf":
             file = writeNode.knob('file').getValue()
-            file = os.path.normpath(file)
+            #file = os.path.normpath(file)
             FFrame = nuke.knob('root.first_frame')
 
             # create Read for mov
@@ -77,7 +78,7 @@ def readFromWrite():
         else:
             # gather values from Write node
             file = writeNode['file'].value()
-            file = os.path.normpath(file)
+            #file = os.path.normpath(file)
 
             # set frame range variables
             if writeNode['use_limit'].value():
